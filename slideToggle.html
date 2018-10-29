@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-1.7.2.min.js"></script>
+	</head>
+	<style>
+		.btn{
+			color:red
+		}
+		div{
+			width:100px;
+			height:100px;
+			background: pink;
+			display: none;
+		}
+	</style>
+	<body>
+		
+		<button>点击toggle</button>
+		<div>content</div>		
+	</body>
+</html>
+<script>
+	$(function(){
+		$("button").on("click",function(){
+			$(this).toggleClass("btn");
+			$("div").stop().slideToggle();
+		})
+	})
+</script>

@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<link rel="stylesheet" href="css/base.css" />
+		<style>
+			/* 导航 */
+			*{
+				margin:0;
+				padding:0;
+			}
+			.back_index {
+				font-size: 0.5rem
+			}
+			
+			.navigation-right {
+				position: fixed;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				right: -100%;
+				box-sizing: border-box;
+				z-index: 99999;
+				background: rgba(0, 0, 0, .5)
+			}
+			
+			.navigation-right>div {
+				width: 70%;
+				float: right;
+				height: 100%;
+				background: wheat;
+			}
+			
+			.navigation-top {
+				height: .8rem;
+				line-height: .8rem;
+				width: 100%;
+				background: #659ae5;
+			}
+			
+			.navigation-top img {
+				float: left;
+				height: 68%;
+				margin: .1rem 0 0 .3rem;
+			}
+			
+			.navigation-top p {
+				float: right;
+			}
+			
+			.navigation-top p a {
+				margin-right: .4rem;
+				color: #fff;
+			}
+			
+			.navigation-list {
+				padding: .2rem 0 1rem .3rem;
+				width: 100%;
+			}
+			
+			.navigation-list {
+				background: #fff;
+			}
+			
+			.navigation-list h4 {
+				line-height: .6rem;
+				color: #999;
+				font-size: .22rem;
+			}
+			
+			.navigation-list p a {
+				color: #659ae5;
+				display: block;
+				padding: .1rem .5rem;
+				margin: .1rem 0;
+			}
+			/* 工程师分布 */
+			
+			.engineer-distribution {
+				position: relative;
+				width: 100%;
+				height: 9.5rem;
+				padding: .7rem 0 0 0;
+				background: url(img/engineer_distribution_bj.jpg) #000 no-repeat 0 18%;
+				background-size: 100% auto;
+			}
+			
+			.engineer-distribution>h2 {
+				font-size: .3rem;
+				color: #fff;
+				font-weight: bold;
+				text-align: center;
+			}
+			
+			.engineer-distribution>p {
+				color: #fff;
+				margin-top: 5rem;
+				padding: .1rem .8rem;
+				font-size: .24rem;
+				background: url("../images/new_index_icons.png")no-repeat 3% 65.5%;
+				background-size: 12% auto;
+			}
+			
+			.engineer-distribution .swiper-container {
+				width: 80%;
+				height: 2.2rem;
+				overflow: hidden;
+				margin: 0 auto;
+				margin-top: .3rem;
+			}
+			/* 地图坐标动效*/
+			
+			@keyframes dh1 {
+				0% {
+					width: .1rem;
+					height: .1rem;
+					opacity: 1;
+				}
+				100% {
+					width: .8rem;
+					height: .8rem;
+					opacity: 0;
+				}
+			}
+			
+			@keyframes dh2 {
+				20% {
+					width: .1rem;
+					height: .1rem;
+					opacity: 1;
+				}
+				100% {
+					width: .8rem;
+					height: .8rem;
+					opacity: 0;
+				}
+			}
+			
+			@keyframes dh3 {
+				40% {
+					width: .1rem;
+					height: .1rem;
+					opacity: 1;
+				}
+				100% {
+					width: .8rem;
+					height: .8rem;
+					opacity: 0;
+				}
+			}
+			
+			.coordinates>span {
+				position: absolute;
+				width: .1rem;
+				height: .1rem;
+				border-radius: 50%;
+				border: .03rem #00c4e2 solid;
+				opacity: 1;
+			}
+			
+			.coordinates {
+				position: absolute;
+				top: .5rem;
+				right: .6rem;
+				width: .1rem;
+				height: .1rem;
+				background: #00c4e2;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				border-radius: 50%;
+				display: none;
+			}
+			
+			.one {
+				animation: dh1 3.5s infinite ease-out;
+			}
+			
+			.two {
+				animation: dh2 3.5s infinite ease-out;
+			}
+			
+			.three {
+				animation: dh3 3.5s infinite ease-out;
+			}
+			
+			.coordinates>div {
+				display: none;
+				position: absolute;
+				top: .1rem;
+				right: .1rem;
+				width: 3.5rem;
+				height: 1.2rem;
+				z-index: 9;
+				color: #FFF;
+				line-height: .4rem;
+				padding: .1rem .2rem;
+				background: url("/m/images/index_map_bj.png")no-repeat 0% 0%;
+				background-size: 100% auto;
+				transform: rotateY(180deg);
+			}
+			
+			.engineer-distribution .coordinates6>div,
+			.engineer-distribution .coordinates7>div,
+			.engineer-distribution .coordinates8>div {
+				padding-left: 1.4rem;
+				padding-right: 0;
+				left: .1rem;
+				right: auto;
+				transform: rotateY(0deg);
+			}
+			
+			.engineer-distribution .coordinates6>div span,
+			.engineer-distribution .coordinates7>div span,
+			.engineer-distribution .coordinates8>div span {
+				transform: rotateY(0deg);
+			}
+			
+			.engineer-distribution .coordinates6>div p,
+			.engineer-distribution .coordinates7>div p,
+			.engineer-distribution .coordinates8>div p {
+				transform: rotateY(0deg);
+			}
+			
+			.coordinates>div p {
+				padding-left: .3rem;
+				transform: rotateY(180deg);
+			}
+			
+			.coordinates>div span {
+				display: block;
+				transform: rotateY(180deg);
+			}
+			
+			.engineer-distribution .coordinates1 div {
+				display: block;
+			}
+			
+			.engineer-distribution .coordinates1 {
+				top: 2rem;
+				right: 1rem;
+				display: flex;
+			}
+			
+			.engineer-distribution .coordinates2 {
+				top: 4rem;
+				right: 2rem;
+			}
+			
+			.engineer-distribution .coordinates3 {
+				top: 3.1rem;
+				right: 2.4rem;
+			}
+			
+			.engineer-distribution .coordinates4 {
+				top: 2.8rem;
+				right: 1.4rem;
+			}
+			
+			.engineer-distribution .coordinates5 {
+				top: 3.8rem;
+				right: 2.5rem;
+			}
+			
+			.engineer-distribution .coordinates6 {
+				top: 2rem;
+				right: 4.5rem;
+			}
+			
+			.engineer-distribution .coordinates7 {
+				top: 3rem;
+				right: 3.5rem;
+			}
+			
+			.engineer-distribution .coordinates8 {
+				top: 4.2rem;
+				right: 3.5rem;
+			}
+			
+			.engineer-distribution .coordinates9 {
+				top: 4.5rem;
+				right: 2.5rem;
+			}
+		</style>
+		<script src="js/jquery-1.7.2.min.js"></script>
+	</head>
+
+	<body>
+		<a href="#" class="back_index"><i></i>导航右侧</a>
+
+		<!-- 头部右侧导航 -->
+		<div class="navigation-right">
+			<div>
+				<div class="navigation-top">
+
+					<p>
+						<a href="/m/Member/Login.aspx">登录</a>
+						<a href="/m/Member/Register/Phone_register.aspx">注册</a>
+					</p>
+				</div>
+				<div class="navigation-list">
+					<h4>帮助</h4>
+
+				</div>
+			</div>
+		</div>
+		<!-- 工程师技术分布 -->
+		 <div class="engineer-distribution">
+		<h2>技术工程师数据分布</h2>
+		<div>
+			<div class="coordinates coordinates1">
+				<span class="one"></span>
+				<span class="two"></span>
+				<span class="three"></span>
+				<div>
+					<span>全国各地</span>
+					<p>20000 + 工程师</p>
+				</div>
+			</div>
+			<div class="coordinates coordinates2">
+				<span class="one"></span>
+				<span class="two"></span>
+				<span class="three"></span>
+				<div>
+					<span>价格标准</span>
+					<p>平台统一价格</p>
+				</div>
+			</div>
+			<div class="coordinates coordinates3">
+				<span class="one"></span>
+				<span class="two"></span>
+				<span class="three"></span>
+				<div>
+					<span>平台担保</span>
+					<p>服务全程监管</p>
+				</div>
+			</div>
+			<div class="coordinates coordinates4">
+				<span class="one"></span>
+				<span class="two"></span>
+				<span class="three"></span>
+				<div>
+					<span>全国各地</span>
+					<p>20000 + 工程师</p>
+				</div>
+			</div>
+			<div class="coordinates coordinates5">
+				<span class="one"></span>
+				<span class="two"></span>
+				<span class="three"></span>
+				<div>
+					<span>异地下单</span>
+					<p>服务更方便 更快捷</p>
+				</div>
+			</div>
+			<div class="coordinates coordinates6">
+				<span class="one"></span>
+				<span class="two"></span>
+				<span class="three"></span>
+				<div>
+					<span>技术水平高</span>
+					<p>80%厂商工程师</p>
+				</div>
+			</div>
+			<div class="coordinates coordinates7">
+				<span class="one"></span>
+				<span class="two"></span>
+				<span class="three"></span>
+				<div>
+					<span>1小时抵达</span>
+					<p>极速上门服务</p>
+				</div>
+			</div>
+			<div class="coordinates coordinates8">
+				<span class="one"></span>
+				<span class="two"></span>
+				<span class="three"></span>
+				<div>
+					<span>全国各地</span>
+					<p>20000 + 工程师</p>
+				</div>
+			</div>
+			<div class="coordinates coordinates9">
+				<span class="one"></span>
+				<span class="two"></span>
+				<span class="three"></span>
+				<div>
+					<span>技术水平高</span>
+					<p>80%厂商工程师</p>
+				</div>
+			</div>
+		</div>
+		</div>
+		<!-- 服务保障 -->
+	</body>
+
+</html>
+<script>
+	$(".back_index").click(function() {
+		$(".navigation-right").animate({
+			"right": "0%"
+		}, 500);
+	})
+	$(".navigation-right").click(function() {
+		$(this).animate({
+			"right": "-100%"
+		}, 500)
+	})
+	$(".navigation-right>div").click(function(event) {
+		event.stopPropagation();
+	})
+
+	//地图效果
+	function e() {
+		var num = Math.floor(Math.random() * 10);
+		$(".engineer-distribution .coordinates").eq(num).css("display", "flex").siblings().hide();
+		$(".engineer-distribution .coordinates").eq(num).find("div").fadeIn(1000).parent().siblings().find("div").hide();
+	}
+	var s = setInterval("e()", 2500);
+</script>
