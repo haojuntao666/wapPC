@@ -1,0 +1,121 @@
+ /*css reset*/
+ 
+ * {
+ 	box-sizing: border-box;
+ }
+ 
+ html {
+ 	width: 100%;
+ 	font-family: "微软雅黑",sans-serif,helvetica;
+ 	font-size: 20px;
+ 	-webkit-text-size-adjust: none;
+ 	margin:0 auto; 
+ 	overflow-x:hidden; 
+ 	min-width:320px; 	
+ 	max-width:750px;
+ 	min-height: 100%;
+ }
+ 
+ body,
+ div,
+ ol,
+ ul,
+ li,
+ h1,
+ h2,
+ h3,
+ h4,
+ h5,
+ h6,
+ p,
+ dl,
+ dd,
+ figure,
+ form,
+ input,
+ textarea,
+ section,
+ article,
+ header,
+ footer,
+ nav,
+ menu {
+ 	margin: 0;
+ 	padding: 0;
+ }
+ 
+ body {
+ 	background-color: #fff;
+ 	color: #333;
+ 	font-family: "微软雅黑";
+ 	/*font-size: 0.7rem;
+ 	line-height: 1.1rem;*/
+ }
+ /*滑动效果更好*/
+ body {
+ 	-webkit-overflow-scrolling: touch;
+ 	overflow-scrolling: touch;
+ }
+ 
+ html,
+ body,
+ form,
+ fieldset,
+ p,
+ div,
+ h1,
+ h2,
+ h3,
+ h4,
+ h5,
+ h6 {
+ 	-webkit-text-size-adjust: 100%;
+ }
+ 
+ ul,
+ ol {
+ 	list-style: none;
+ }
+ 
+ img {
+ 	border: none;
+ 	vertical-align: middle;
+ }
+ 
+ a {
+ 	text-decoration: none;
+ 	outline: none;
+ 	border: none;
+ 	tap-highlight-color: rgba(0, 0, 0, 0);
+ 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+ 	-ms-tap-highlight-color: rgba(0, 0, 0, 0);
+ 	color: #666
+ }
+button,input{
+-webkit-tap-highlight-color:rgba(255,0,0,0);
+border:0;
+	outline: none;
+
+}
+ em {
+ 	font-style: normal !important;
+ }
+ 
+ /* 添加全局样式 解决input设置背景颜色出现灰色背景 没有显示问题 */
+ input[type=button],
+ input[type=submit],
+ input[type=file],
+ button {
+ 	cursor: pointer;
+ 	-webkit-appearance: none;
+ }
+/* 清除浮动 */
+.clearfix::before,
+.clearfix::after{
+	content:'';
+	display: block;
+	line-height: 0;
+	height: 0;
+	visibility: hidden;
+	clear: both;
+}
