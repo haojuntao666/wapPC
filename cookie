@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JQ设置cookie、读取cookie、删除cookie</title>
+
+</head>
+
+<body>
+    <button id="setCookie">设置cookie</button>
+    <button id="lookCookie">获取cookie值</button>
+    <button id="clearCookie">清除cookie</button>
+    <div>
+        <span>cookie的值:</span>
+        <span id="cookieValue"></span>
+    </div>
+
+
+
+</body>
+
+</html>
+<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="js/jquery.cookie.js"></script>
+<script>
+	
+	
+				//读取cookie
+//				var value = $.cookie('the_cookie'); 
+//				var value_07 = $.cookie('the_cookie_expires_07'); 
+//				document.writeln('读取cookie的值：' + value + '<br />' + '读取cookie存在7天的值：' + value_07);
+
+	
+    //设置cookie的值
+    $("#setCookie").click(function () {
+		//所创建的cookie有效期默认到用户关闭浏览器为止
+		//$.cookie('cookieName', '默认cookie的值');
+		
+		//创建一个cookie并设置 cookie的有效路径： 
+        $.cookie('cookieName', 'cookieValue',{expires:7});
+        $("#cookieValue").text($.cookie('cookieName'));
+
+    });
+
+
+    //查看cookie的值
+    $("#lookCookie").click(function () {
+
+        $("#cookieValue").text($.cookie('cookieName'));
+       
+        
+        var value= $.cookie('cookieName'); 
+		document.writeln('读取cookie的值：' + value);
+
+    });
+
+
+    //清除cookie的值
+    $("#clearCookie").click(function () {
+
+        $.cookie('cookieName', null);
+
+    });
+</script>
