@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<p>
+			<label for="userName">输入用户名：</label>
+			<input type="text" id="userName" name="userName" style="padding-left:20px" />
+		</p>
+		<p>
+			<label for="pwd">输入密码：</label>
+			<input type="passWord" id="passWord" name="passWord" style="padding-left:20px" />
+
+		</p>
+		<p><input type="checkbox" name="checkbox" value="" id="rememberPassword"/></p>
+		<p><button id="accLogBut">登陆</button></p>
+	</body>
+
+</html>
+<script src='http://code.jquery.com/jquery-1.9.1.min.js'></script>
+<script src="js/jquery.base64.js"></script>
+<script type="text/javascript" src="js/jquery.cookie.js"></script>
+
+<script>
+	
+	
+	//step 1:当鼠标点击复选框时，创建一个持久化的cookie
+	var userName = null;
+	var passWord = null;  //限制为：鼠标点击登录时判断：
+
+	$("#accLogBut").click(function() {    /* 将登录按钮置灰 */    //如果被选中状态，则创建cookie
+		if($('input[type=checkbox]').is(':checked')) {
+			passWord = $('#passWord').val();
+			//创建cookie，并将用户名和密码保存进去,密码采用base64加密以及解密
+			$.cookie('userName', $('#userName').val(), {
+				expires: 7
+			});
+			$.cookie('passWord', $.base64.encode(passWord), {
+				expires: 7
+			});
+		} else {
+			//如果复选框没有被选中，则删除cookie
+
+			$.cookie('userName', ""); 
+			$.cookie('passWord', ""); 
+		}   
+	});  //页面每次被加载的时候，都把cookie中的值取出来，然后存放到对应的文本框中
+	 
+	$(function() {  
+		var userName = $.cookie('userName');
+		var passWord = $.cookie('passWord');
+
+		$("#userName").val(userName);
+		$("#passWord").val($.base64.decode(passWord)); 
+		if(userName != null && userName != "" && passWord != null && passWord != "") {
+
+			$("#rememberPassword").attr("checked", true);
+		}
+
+	});
+</script>
