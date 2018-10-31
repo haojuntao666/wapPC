@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<form>
+			<input type="password" name="password" id="password" onblur="passwordBlur()" />
+			<input type="text" id="text" style="display:none" onblur="textBlur()" />
+			<!--<input type="checkbox" onclick="xyPassword()" />显示密码-->
+			
+			<span onclick="xyPassword()">显示密码</span>
+			<input type="submit" value="提交" />
+		</form>
+		<script src='http://code.jquery.com/jquery-1.9.1.min.js'></script>
+		<script>
+			//点击多选框切换text和password的隐藏和显示
+			function xyPassword() {
+				$("#text").toggle();
+				$("#password").toggle();
+			}
+			//text框失去焦点把text框的值赋值给password框
+			function textBlur() {
+				$("#password").val($("#text").val());
+			}
+
+			//password框失去焦点把password框的值赋值给text框
+			function passwordBlur() {
+				$("#text").val($("#password").val());
+			}
+		</script>
+	</body>
+
+</html>
