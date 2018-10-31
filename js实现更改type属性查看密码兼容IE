@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		 <style type="text/css">
+            .pass{
+                width:200px;
+                height: 20px;
+            }
+        </style>
+	</head>
+	<body>
+		
+注意：jquery有一个缺点，那就是IE浏览器不支持修改type，所以建议用js实现。<br/>
+ <input type="password" name="" id="pass" value="123456" class="pass"/><br/>
+<input type="button" name="" id="btn" value="点击显示" />
+
+<script>
+//	<!--2.方法一：js代码实现-->/
+    window.onload=function(){
+        var btn=document.getElementById("btn");
+        var pass=document.getElementById("pass")
+        btn.onmousedown=function(){
+            pass.type="text"
+        };
+        btn.onmouseup=btn.onmouseout=function(){
+            pass.type="password"
+        }
+    }
+
+//<!--方法二：jquery代码实现-->
+//	$(function() {
+//		$("#btn").mousedown(function() {
+//			$("#pass").attr("type", "text");
+//		});
+//		$("#btn").mouseup(function() {
+//			$("#pass").attr("type", "password");
+//		});
+//	});
+</script>
+	</body>
+</html>
